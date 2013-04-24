@@ -1,31 +1,46 @@
 extends layout
 
 block content
-  h1= title
-  form.form-horizontal(action='/quotes', method='post')
-    .control-group
-      label.control-label(for='quote') Quotation:
-      .controls
-        textarea(id='quote', name='quote', placeholder: 'Quotation')
-    .control-group
-      label.control-label(for='names') Who said the quote:
-      .controls
-        input(id='names', name='name', type='text', placeholder: 'Name')
-    .control-group
-      .controls
-        button.btn-success.btn(type='submit') Submit new quote
+  h1 Build
+   sup x
+  .span6
+   .hero-unit
+     fieldset
+       .legend 
+          h3 Upload a Project 
+     form.form-horizontal(action='/quotes', method='post')
+     .control-group
+       label.control-label(for='names') Name of Project:
+       .controls
+         input(id='names', name='name', type='text', placeholder: 'Name')    
+     .control-group
+       label.control-label(for='projdescription') Description:
+       .controls
+         textarea(id='projdescription', name='projdescription', placeholder: 'Description')
+     .control-group
+       label.control-label(for='collaborators') Collaborators:
+       .controls
+         input(id='collaborators', name='collaborators', type='text', placeholder: 'Collaborators')          
+     .control-group
+       label.control-label(for='')    
+     .control-group
+       .controls
+         button.btn-success.btn(type='submit') Upload Project
 
-  h2 Quote board
-  ul(id='quotes')
-    for quote in quotes
-      li
-        blockquote
-          p &ldquo;#{quote.quote}&rdquo;
-          em
-            cite &mdash; #{quote.name}
-        form(action="/delete", method="post")
-          small
-            | Submitted by #{quote.submitter}  
-            if quote.submitter == user.username
-              button.btn.btn-mini(type="submit", name="id", value=quote._id, style="padding: 0 5px", onclick="return confirm('Are you sure you want to purge this quote from history?')")
-                | &times;
+  .span6
+   .hero-unit
+     fieldset
+       .legend 
+          h3 Suggest an Idea 
+     form.form-horizontal(action='/quotes', method='post')
+     .control-group
+       label.control-label(for='ideas') Name of Idea:
+       .controls
+         input(id='ideas', name='idea', type='text', placeholder: 'idea')    
+     .control-group
+       label.control-label(for='ideadescription') Description:
+       .controls
+         textarea(id='ideadescription', name='ideadescription', placeholder: 'Description')       
+     .control-group
+       .controls
+         button.btn-primary.btn(type='submit') Submit Idea
