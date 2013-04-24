@@ -12,10 +12,10 @@ var express = require('express')
   , mongojs = require('mongojs')
   , MongoStore = require('connect-mongo')(express);
 
-var app = express(), db;
+var app = express();
 
 app.configure(function () {
-  db = mongojs(process.env.MONGOLAB_URI || 'olinapps-quotes', ['quotes']);
+  //db = mongojs(process.env.MONGOLAB_URI || 'olinapps-quotes', ['quotes']);
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -54,9 +54,8 @@ app.all('/*', olinapps.middleware);
 app.all('/*', olinapps.loginRequired);
 
 app.get('/', quotes.home);
-app.get('/delete', quotes.delete);
-app.get('/name', quotes.name);
-app.post('/quotes', quotes.quote);
+app.post('/submit/project', quotes.newProject);
+app.post('/submit/idea', quotes.newIdea);
 
 
 /**
