@@ -6,6 +6,8 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
+  , routes = require('./routes')
+  , quotes = require('./routes/quotes')
   , olinapps = require('olinapps')
   , mongojs = require('mongojs')
   , MongoStore = require('connect-mongo')(express);
@@ -51,56 +53,11 @@ app.all('/logout', olinapps.logout);
 app.all('/*', olinapps.middleware);
 app.all('/*', olinapps.loginRequired);
 
-/**
- * Routes
- */
+app.get('/', quotes.home);
+app.get('/delete', quotes.delete);
+app.get('/name', quotes.name);
+app.post('/quotes', quotes.quote);
 
-app.get('/', function (req, res) {
-  db.quotes.find({
-    published: true
-  }).sort({date: -1}, function (err, docs) {
-    console.log(docs);
-    res.render('index', {
-      title: 'Olin Quotes Board v4.0',
-      quotes: docs,
-      user: olinapps.user(req)
-    });
-  })
-});
-
-app.post('/delete', function (req, res) {
-  console.log(olinapps.user(req).username);
-  db.quotes.update({
-    _id: db.ObjectId(req.body.id),
-    submitter: olinapps.user(req).username
-  }, {
-    $set: {
-      published: false
-    }
-  }, function () {
-    res.redirect('/');
-  })
-})
-
-app.get('/names', function (req, res) {
-  db.quotes.distinct('name', function (err, names) {
-    res.json(names);
-  });
-})
-
-app.post('/quotes', function (req, res) {
-  if (req.body.name && req.body.quote) {
-    db.quotes.save({
-      name: req.body.name,
-      quote: req.body.quote,
-      submitter: olinapps.user(req).username,
-      date: Date.now(),
-      published: true
-    }, res.redirect.bind(res, '/'));
-  } else {
-    res.json({error: true, message: 'Invalid quote'}, 500);
-  }
-})
 
 /**
  * Launch
