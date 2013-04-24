@@ -8,42 +8,43 @@ block content
      fieldset
        .legend 
           h3 Upload a Project 
-     form.form-horizontal(action='/quotes', method='post')
-     .control-group
-       label.control-label(for='names') Name of Project:
-       .controls
-         input(id='names', name='name', type='text', placeholder: 'Name')    
-     .control-group
-       label.control-label(for='projdescription') Description:
-       .controls
-         textarea(id='projdescription', name='projdescription', placeholder: 'Description')
-     .control-group
-       label.control-label(for='collaborators') Collaborators:
-       .controls
-         input(id='collaborators', name='collaborators', type='text', placeholder: 'Collaborators')          
-     .control-group
-       label.control-label(for='')    
-     .control-group
-       .controls
-         button.btn-success.btn(type='submit') 
-          i.icon-user.icon-inbox.icon-white
-          |  Upload Project
+     form.form-horizontal(id='projectForm', action='/submit/project', method='post')
+       .control-group
+         label.control-label(for='names') Name of Project:
+         .controls
+           input(id='names', name='name', type='text', placeholder: 'Name')    
+       .control-group
+         label.control-label(for='projdescription') Description:
+         .controls
+           textarea(id='projdescription', name='projdescription', placeholder: 'Description')
+       .control-group
+         label.control-label(for='collaborators') Collaborators:
+         .controls
+           input(id='collaborators', name='collaborators', type='text', placeholder: 'Collaborators')          
+       .control-group
+         label.control-label(for='')    
+       .control-group
+         .controls
+           button.btn-success.btn(type='submit') 
+            i.icon-user.icon-inbox.icon-white
+            |  Upload Project
   .span6
    .hero-unit
      fieldset
        .legend 
           h3 Suggest an Idea 
-     form.form-horizontal(action='/quotes', method='post')
-     .control-group
-       label.control-label(for='ideas') Name of Idea:
-       .controls
-         input(id='ideas', name='idea', type='text', placeholder: 'idea')    
-     .control-group
-       label.control-label(for='ideadescription') Description:
-       .controls
-         textarea(id='ideadescription', name='ideadescription', placeholder: 'Description')       
-     .control-group
-       .controls
-         button.btn-primary.btn(type='submit')
-           i.icon-user.icon-exclamation-sign.icon-white
-           |  Submit Idea
+     form.form-horizontal(id='ideaForm', action='/submit/idea', method='post')
+       .control-group
+         label.control-label(for='ideas') Name of Idea:
+         .controls
+           input(id='ideas', name='idea', type='text', placeholder: 'idea')    
+       .control-group
+         label.control-label(for='ideadescription') Description:
+         .controls
+           textarea(id='ideadescription', name='ideadescription', placeholder: 'Description')       
+       .control-group
+         .controls
+           button.btn-primary.btn(type='submit')
+             i.icon-user.icon-exclamation-sign.icon-white
+             |  Submit Idea
+  #result
