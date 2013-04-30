@@ -1,16 +1,16 @@
 extends layout
 
+
 block content
-  h1 Build
-   sup x
   .span(id="listWrapper")
     each idea, i in ideas
       .well
         div(class="arrow")
-          a(href="#")
-            img(src='/images/arrow.jpg', width='100', height='100')
+          a(id=idea._id, class="adoptLink", onclick="otherClick(this.id)")
+            img(src='/images/cat.jpg', width='100', height='100')
         div(class="listText")
           p(class="titles") #{idea.title}
           p(class="text") "#{idea.description}"
-          p(class="names") -#{idea.name}
-
+          p(class="names") -#{idea.name} (#{idea.upvote})  
+            a(id=idea._id, class="upvoteLink", onclick="testClick(this.id)")
+              img(src='/images/arrow.jpg', width='12', height='12')

@@ -1,7 +1,20 @@
 extends layout
 
 block content
+  h1 Build
+   sup x
   .span(id="listWrapper")
+    div(id='dataHolder')
+      img(id="avatar", src='/images/arrow.jpg')
+      div(id='personData')
+        
+    div(id='projectHolder')
+    div(is='ideaHolder')
+
+
+
+
+
     each project, i in projects
       .well(class="projectWell")
         div(class="listText")

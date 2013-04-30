@@ -7,8 +7,16 @@ html
     link(rel="stylesheet", href="/stylesheets/style.css")
     script(src='http://code.jquery.com/jquery.min.js')
     script(src="http://code.jquery.com/jquery-1.9.1.js")
-    script(src="http://code.jquery.com/ui/1.10.1/jquery-ui.js")
+    script(src="http://code.jquery.com/ui/1.10.1/jquery-ui.js")   
     script(src='/javascripts/script.js')
+    script(type='text/javascript')
+      function testClick(clickID) {
+        $.post('/upvote', {_id: clickID});
+      }
+      function otherClick(clickID){
+        $.post('/adopt', {_id: clickID});
+      }
+
     style
       #quotes, #quotes li { display: block; padding: 0; margin: 0; }
       #quotes li { margin: 15px 0 30px }

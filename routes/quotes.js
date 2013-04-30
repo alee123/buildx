@@ -6,12 +6,26 @@ var Idea = require('../models/idea')
  * Routes
  */
 
-exports.home = function (req, res) {
-  res.render('index', {
+exports.submit = function (req, res) {
+  res.render('submitStuff', {
     title: 'buildx',
     user: olinapps.user(req)
   });
 };
+
+exports.home = function (req, res) {
+  res.render('homepage', {
+    title: 'buildx',
+    user: olinapps.user(req)
+  });
+};
+
+exports.info = function (req, res){
+    res.render('whatisbuildx', {
+    title: 'buildx',
+    user: olinapps.user(req)
+  });
+}
 
 exports.newProject = function(req,res){
   console.log(req.body);
@@ -46,8 +60,16 @@ exports.newIdea = function(req,res){
   });
 };
 
-exports.upvote = function(req,res){
-  console.log(req.body);
+exports.adopt = function(req,res){
+  var user = olinapps.user(req).username;
+  var adoptFind = Idea.find({_id:req.body._id}).exec(function (err, ads){
+    var alreadyAdopted = ads[0].adopters;
+    var ideas = Idea.update({_id:req.body._id}, {$set: {'upvote':ups[0].upvote+1}}).exec(function (err,docs){
+      if (err)
+        return console.log(ideas);
+      console.log(docs);
+    });
+  });
 };
 
 exports.ideaList = function (req, res) {
@@ -74,5 +96,17 @@ exports.projectprof = function (req, res) {
       return console.log("error", ideas);
     console.log(docs);
     res.render('newproject', {title:'projects', projects:docs});
+  });
+};
+
+exports.upvote = function(req,res){
+  console.log(req.body._id);
+  var user = olinapps.user(req).username;
+  var upFind = Idea.find({_id:req.body._id}).exec(function (err, ups){
+    var ideas = Idea.update({_id:req.body._id}, {$set: {'upvote':ups[0].upvote+1}}).exec(function (err,docs){
+      if (err)
+        return console.log(ideas);
+      console.log(docs);
+    });
   });
 };
