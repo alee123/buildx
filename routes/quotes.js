@@ -19,10 +19,12 @@ exports.newProject = function(req,res){
     leader: olinapps.user(req).username,
     title: req.body.name, 
     description: req.body.projdescription, 
+    abbrevDescription: ((req.body.projdescription).slice(0,100)).toString(),
     coverphoto: '', 
     files:'', 
     collaborators: [req.body.collaborators]
   });
+  console.log(project);
   project.save(function(err){
     if (err)
       return console.log(err);
@@ -52,14 +54,16 @@ exports.ideaList = function (req, res) {
   var ideas = Idea.find({}).exec(function (err, docs){
     if (err)
       return console.log("error", ideas);
+    console.log(docs);
     res.render('ideas', {title:'ideas', ideas:docs});
   });
 };
 
 exports.projectList = function (req, res) {
-  var projects = Project.find({}).exec(function (err, docs){
+  var projects = Project.find({}).sort("-_id").exec(function (err, docs){
     if (err)
       return console.log("error", ideas);
+    console.log(docs);
     res.render('projects', {title:'projects', projects:docs});
   });
 };

@@ -9,9 +9,13 @@ block content
         div(class="listText")
           img(class="coverPic", src='/images/arrow.jpg')
           br
-          p(class="titles") #{project.title}
-          p(class="text") #{project.description}
+          div(class="titleDiv")
+            p(class="titles") #{project.title}
+          div(class="textDiv")
+            p(class="text") "#{project.abbrevDescription} ..."
           p(class="names") -#{project.leader}
+            each person, i in project.collaborators
+              p(class="names") -#{person}
 
 
 

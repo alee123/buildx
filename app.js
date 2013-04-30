@@ -61,7 +61,7 @@ app.get('/projects', quotes.projectList);
 app.post('/upvote', quotes.upvote);
 
 app.get('/home', quotes.home);
-app.get('/info', quotes.info)
+//app.get('/info', quotes.info)
 
 /**
  * Launch

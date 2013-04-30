@@ -13,7 +13,8 @@ div{
 }
 
 #listWrapper{
-	width: 90%;
+	width:1200px;
+	margin:0 auto;
 }
 
 .titles{
@@ -21,9 +22,22 @@ div{
 	font-size: 25px; 
 }
 
+.titleDiv{
+	height: 40px;
+	vertical-align: center;
+	margin-bottom: 5px;
+}
+
+.textDiv{
+	height: 80px;
+	vertical-align: center;
+	margin-bottom: 5px;
+}
+
 .names{
 	font-style: italic;
 	font-size: 10px;
+	margin-bottom: 0px;
 }
 
 .arrow{
@@ -46,4 +60,6 @@ div{
 	display:inline-block;
 	vertical-align: top;
 	margin: 10px;
+	height: 410px;
+	text-align:left;
 }
