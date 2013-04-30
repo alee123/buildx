@@ -10,7 +10,8 @@ var express = require('express')
   , quotes = require('./routes/quotes')
   , olinapps = require('olinapps')
   , mongojs = require('mongojs')
-  , MongoStore = require('connect-mongo')(express);
+  , MongoStore = require('connect-mongo')(express)
+  , rem = require('rem');
 
 var app = express();
 
@@ -62,6 +63,15 @@ app.post('/upvote', quotes.upvote);
 
 app.get('/home', quotes.home);
 //app.get('/info', quotes.info)
+
+app.get('/students.json', function (req, res) {
+  rem.json('http://directory.olinapps.com/api/people').get({
+    sessionid: req.session['sessionid']
+  }, function (err, json) {
+    res.json(json);
+  });
+})
+
 
 /**
  * Launch
