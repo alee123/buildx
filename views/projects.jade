@@ -12,8 +12,8 @@ block content
           div(class="titleDiv")
             a(class="titles", href=project._id) #{project.title}
           div(class="textDiv")
-            p(class="text") #{project.abbrevDescription}
-          p(class="names") -#{project.leader}
+            p(class="text") "#{project.abbrevDescription}..."
+          p(class="names") -#{project.leader} (#{project.upvote})
             each person, i in project.collaborators
               p(class="names") -#{person}
 
