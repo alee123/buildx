@@ -5,7 +5,7 @@ var projectSchema = mongoose.Schema({
   title: String,
   description: String,
   abbrevDescription: String,
-  coverPhoto: {type: String, default:"/images/cat.jpg"}
+  coverPhoto: {type: String, default:"/images/cat.jpg"},
   files: [{type: String, ref:'FilePath'}],
   collaborators: [{type: String, ref: 'Collaborator'}],
   upvote: {type: Number, default: 0}
