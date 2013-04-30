@@ -15,18 +15,3 @@ block content
 
 
 
-    each project, i in projects
-      .well(class="projectWell")
-        div(class="listText")
-          img(class="coverPic", src='/images/arrow.jpg')
-          br
-          div(class="titleDiv")
-            a(class="titles", href=project._id) #{project.title}
-          div(class="textDiv")
-            p(class="text") "#{project.abbrevDescription}..."
-          p(class="names") -#{project.leader} (#{project.upvote})
-            each person, i in project.collaborators
-              p(class="names") -#{person}
-
-
-

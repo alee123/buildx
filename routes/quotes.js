@@ -15,9 +15,11 @@ exports.submit = function (req, res) {
 };
 
 exports.home = function (req, res) {
-  res.render('homepage', {
-    title: 'buildx',
-    user: olinapps.user(req)
+  var projects = Project.find({}).sort("-_id").exec(function (err, docs){
+    res.render('homepage', {
+      title: 'buildx',
+      user: olinapps.user(req), projects: docs.slice(0,4)
+    });
   });
 };
 

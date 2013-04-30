@@ -63,3 +63,20 @@ div{
 	height: 410px;
 	text-align:left;
 }
+
+.projectWellHome{
+	width:17%;
+	display:inline-block;
+	vertical-align: top;
+	margin:10px;
+	height: 200px;
+}
+
+.controls{
+	margin:10px;
+}
+
+.titlesHome{
+	font-size:14px;
+	font-weight:bolder;
+}

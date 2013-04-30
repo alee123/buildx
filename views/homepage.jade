@@ -14,7 +14,15 @@ block content
          .container-fluid
              .row-fluid
                  .span8
-                     h3 Top Projects:
+                    h3 Top Projects:
+                    each project, i in projects
+                      .well(class="projectWellHome")
+                        div(class="listText")
+                          img(class="coverPic", src='/images/cat.jpg')
+                          br
+                          div(class="titleDiv")
+                            a(class="titlesHome", href="/projects/"+project._id) #{project.title}
+
                  .span4
                      h3 New Ideas:
                      table.table.table-condensed
