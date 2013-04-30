@@ -12,7 +12,7 @@ block content
           div(class="titleDiv")
             p(class="titles") #{project.title}
           div(class="textDiv")
-            p(class="text") "#{project.abbrevDescription} ..."
+            p(class="text") #{project.abbrevDescription}
           p(class="names") -#{project.leader}
             each person, i in project.collaborators
               p(class="names") -#{person}
