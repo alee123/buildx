@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var projectSchema = mongoose.Schema({
   leader: String,
+  title: String,
   description: String,
   coverPhoto: String,
   files: [{type: String, ref:'FilePath'}],

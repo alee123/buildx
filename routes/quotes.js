@@ -16,7 +16,8 @@ exports.home = function (req, res) {
 exports.newProject = function(req,res){
   console.log(req.body);
   var project = new Project({
-    leader: req.body.name, 
+    leader: olinapps.user(req).username,
+    title: req.body.name, 
     description: req.body.projdescription, 
     coverphoto: '', 
     files:'', 
@@ -31,7 +32,8 @@ exports.newProject = function(req,res){
 exports.newIdea = function(req,res){
   console.log(req.body);
   var idea = new Idea({
-    name:req.body.idea,
+    name:olinapps.user(req).username,
+    title:req.body.idea,
     description:req.body.ideadescription,
     files:'',
     tags:[]
@@ -39,5 +41,21 @@ exports.newIdea = function(req,res){
   idea.save(function(err){
     if (err)
       return console.log(err);
+  });
+};
+
+exports.ideaList = function (req, res) {
+  var ideas = Idea.find({}).exec(function (err, docs){
+    if (err)
+      return console.log("error", ideas);
+    res.render('ideas', {title:'ideas', ideas:docs});
+  });
+};
+
+exports.projectList = function (req, res) {
+  var projects = Project.find({}).exec(function (err, docs){
+    if (err)
+      return console.log("error", ideas);
+    res.render('projects', {title:'projects', projects:docs});
   });
 };

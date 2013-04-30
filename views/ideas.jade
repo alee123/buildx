@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Build
+   sup x
+  .span(id="listWrapper")
+    each idea, i in ideas
+      .well
+        div(class="arrow")
+          a(href="#")
+            img(src='/images/arrow.jpg', width='100', height='100')
+        div(class="listText")
+          p(class="titles") #{idea.title}
+          p(class="text") "#{idea.description}"
+          p(class="names") -#{idea.name}
+

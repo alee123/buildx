@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Build
+   sup x
+  .span(id="listWrapper")
+    each project, i in projects
+      .well(class="projectWell")
+        div(class="listText")
+          img(class="coverPic", src='/images/arrow.jpg')
+          br
+          p(class="titles") #{project.title}
+          p(class="text") #{project.description}
+          p(class="names") -#{project.leader}
+
+
+

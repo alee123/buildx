@@ -3,8 +3,8 @@ mongoose.connect(process.env.MONGOLAB_URI || 'localhost');
 
 var ideaSchema = mongoose.Schema({
   name: String,
+  title: String,
   description: String,
-  files: [{type: String, ref:'FilePath'}],
   tags: [{type: String, ref: 'Tag'}],
   upvote: {type: Number, default: 0}
 });

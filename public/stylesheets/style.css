@@ -1,8 +1,49 @@
-body {
+/*body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+*/
+
+div{
+	margin: 0px;
+}
+
+#listWrapper{
+	width: 90%;
+}
+
+.titles{
+	font-weight: bolder;
+	font-size: 25px; 
+}
+
+.names{
+	font-style: italic;
+	font-size: 10px;
+}
+
+.arrow{
+	display:inline-block;
+	vertical-align: top;
+}
+
+.coverPic{
+	margin-bottom: 10px;
+}
+
+.listText{
+	display:inline-block;
+	margin: 10px;
+	vertical-align: top;
+}
+
+.projectWell{
+	width: 20%;
+	display:inline-block;
+	vertical-align: top;
+	margin: 10px;
 }

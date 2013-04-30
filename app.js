@@ -56,6 +56,8 @@ app.all('/*', olinapps.loginRequired);
 app.get('/', quotes.home);
 app.post('/submit/project', quotes.newProject);
 app.post('/submit/idea', quotes.newIdea);
+app.get('/ideas', quotes.ideaList);
+app.get('/projects', quotes.projectList);
 
 
 /**
