@@ -5,7 +5,7 @@ block content
     each project, i in projects
       .well(class="projectWell")
         div(class="listText")
-          img(class="coverPic", src='/images/cat.jpg')
+          img(class="coverPic", src=project.coverPhoto)
           br
           div(class="titleDiv")
             a(class="titles", href="/projects/"+project._id) #{project.title}
