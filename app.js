@@ -53,13 +53,15 @@ app.all('/logout', olinapps.logout);
 app.all('/*', olinapps.middleware);
 app.all('/*', olinapps.loginRequired);
 
-app.get('/', quotes.home);
+//app.get('/', quotes.home);
 app.post('/submit/project', quotes.newProject);
 app.post('/submit/idea', quotes.newIdea);
 app.get('/ideas', quotes.ideaList);
 app.get('/projects', quotes.projectList);
 app.post('/upvote', quotes.upvote);
 
+app.get('/home', quotes.home);
+app.get('/info', quotes.info)
 
 /**
  * Launch
