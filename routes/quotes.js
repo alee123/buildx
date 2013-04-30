@@ -67,3 +67,12 @@ exports.projectList = function (req, res) {
     res.render('projects', {title:'projects', projects:docs});
   });
 };
+
+exports.projectprof = function (req, res) {
+  var projects = Project.find({}).sort("-_id").exec(function (err, docs){
+    if (err)
+      return console.log("error", ideas);
+    console.log(docs);
+    res.render('newproject', {title:'projects', projects:docs});
+  });
+};
