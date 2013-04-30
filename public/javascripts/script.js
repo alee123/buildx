@@ -4,15 +4,16 @@ $(function () {
     event.preventDefault();
     $.post("/submit/project", $('#projectForm').serialize());
 
-    $('#result').html("<p>Submitted!</p>")
-
+    document.getElementById("names").value = "";
+    document.getElementById("projdescription").value = "";
+    document.getElementById("collaborators").value = "";
   })
   $('#ideaForm').submit(function (event) {
     console.log('called');
     event.preventDefault();
     $.post("/submit/idea", $('#ideaForm').serialize());
-
-    $('#result').html("<p>Submitted!</p>")
+    document.getElementById("ideas").value = "";
+    document.getElementById("ideadescription").value = "";
 
   })
 })

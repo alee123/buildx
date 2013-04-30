@@ -44,6 +44,10 @@ exports.newIdea = function(req,res){
   });
 };
 
+exports.upvote = function(req,res){
+  console.log(req.body);
+};
+
 exports.ideaList = function (req, res) {
   var ideas = Idea.find({}).exec(function (err, docs){
     if (err)
