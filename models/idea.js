@@ -6,7 +6,8 @@ var ideaSchema = mongoose.Schema({
   title: String,
   description: String,
   tags: [{type: String, ref: 'Tag'}],
-  upvote: {type: Number, default: 0}
+  upvote: {type: Number, default: 0},
+  adopters: String
 });
 
 var Idea = mongoose.model('Idea', ideaSchema);

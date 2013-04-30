@@ -60,8 +60,12 @@ app.post('/submit/idea', quotes.newIdea);
 app.get('/ideas', quotes.ideaList);
 app.get('/projects', quotes.projectList);
 app.post('/upvote', quotes.upvote);
+app.post('/upvoteP', quotes.upvoteP);
 app.get('/submit', quotes.submit);
 app.get('/info', quotes.info)
+app.get('/upvote', quotes.update);
+app.get('/projects/:projID', quotes.projectprof);
+app.post('/adopt', quotes.adopt);
 
 app.get('/students.json', function (req, res) {
   console.log(req.session['sessionid']);

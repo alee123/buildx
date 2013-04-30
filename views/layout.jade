@@ -12,9 +12,20 @@ html
     script(type='text/javascript')
       function testClick(clickID) {
         $.post('/upvote', {_id: clickID});
+        $.get("/upvote",function(data){
+          $('#listWrapper').remove();
+          $('#top').append(data);  
+        })
+      }
+      function upProject(clickID) {
+        $.post('/upvoteP', {_id: clickID});
       }
       function otherClick(clickID){
         $.post('/adopt', {_id: clickID});
+        $.get("/upvote",function(data){
+          $('#listWrapper').remove();
+          $('#top').append(data);  
+        })
       }
 
     style
@@ -28,23 +39,23 @@ html
       tr
         td(width='15%')
         td(width='200px')
-          img(src = 'buildx.png')
+          img(src = '/images/buildx.png')
         td(width='180px')
           .control-group
            .controls
              button.btn-link.btn(type='submit') 
-              img(src = 'whatisbuildx.png')
+              img(src = '/images/whatisbuildx.png')
         td(width='180px') 
           .control-group
            .controls
             .toplinks
              button.btn-link.btn(type='submit') 
-              img(src = 'adoptanidea.png')
+              img(src = '/images/adoptanidea.png')
         td(width='180px')
           .control-group
            .controls
              button.btn-link.btn(type='submit') 
-              img(src = 'submitaproject.png')
+              img(src = '/images/submitaproject.png')
         td(width='500px')    
           .input-append
               input#appendedInputButton.span2(type='text')

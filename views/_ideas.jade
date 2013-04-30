@@ -1,0 +1,13 @@
+.span(id="listWrapper")
+  each idea, i in ideas
+    .well
+      div(class="arrow")
+        a(id=idea._id, class="adoptLink", onclick="otherClick(this.id)")
+          img(src='/images/cat.jpg', width='115', height='115')
+      div(class="listText")
+        p(class="titles") #{idea.title}
+        p(class="text") "#{idea.description}"
+        p(class="names") -#{idea.name} (#{idea.upvote})  
+          a(id=idea._id, class="upvoteLink", onclick="testClick(this.id)")
+            img(src='/images/arrow.jpg', width='12', height='12') 
+        p(class="names") adopters:#{idea.adopters}
