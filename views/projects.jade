@@ -10,7 +10,7 @@ block content
           img(class="coverPic", src='/images/arrow.jpg')
           br
           div(class="titleDiv")
-            p(class="titles") #{project.title}
+            a(class="titles", href=project._id) #{project.title}
           div(class="textDiv")
             p(class="text") #{project.abbrevDescription}
           p(class="names") -#{project.leader}
