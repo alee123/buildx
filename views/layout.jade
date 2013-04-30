@@ -15,6 +15,33 @@ html
       #quotes li blockquote { margin-bottom: 5px; }
       #quotes li small { color: #bbb; font-size: 10px }
       #quotes li small:hover { color: black; }
+
+   table(border='0')
+      tr
+        td(width='15%')
+        td(width='200px')
+          img(src = 'buildx.png')
+        td(width='180px')
+          .control-group
+           .controls
+             button.btn-link.btn(type='submit') 
+              img(src = 'whatisbuildx.png')
+        td(width='180px') 
+          .control-group
+           .controls
+            .toplinks
+             button.btn-link.btn(type='submit') 
+              img(src = 'adoptanidea.png')
+        td(width='180px')
+          .control-group
+           .controls
+             button.btn-link.btn(type='submit') 
+              img(src = 'submitaproject.png')
+        td(width='500px')    
+          .input-append
+              input#appendedInputButton.span2(type='text')
+              button.btn(type='button') 
+               i.icon-search
   body
     .container-fluid
       block content
