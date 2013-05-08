@@ -68,7 +68,7 @@ app.get('/projects/:projID', quotes.projectprof);
 app.post('/adopt', quotes.adopt);
 app.get('/find/:name', quotes.findPerson);
 
-
+/*
 app.get('/students.json', function (req, res) {
   console.log(req.session['sessionid']);
   rem.json('http://directory.olinapps.com/api/people').get({

@@ -138,20 +138,21 @@ exports.upvoteP = function(req,res){
 
 exports.findPerson = function(req,res){
   var name = req.params.name;
-  //var studentNum;
+  var studentNum;
   rem.json('http://directory.olinapps.com/api/people').get({
     sessionid: req.session['sessionid']
   }, function (err, json) {
+    //res.json(json);
+    var students = err.people;
     res.json(json);
-    //for(i =0; i<json.people.length; i++){
-      //var atSign = json.people[i].email.indexOf("@");
-      //var temp = json.people[i].email.subtr(0, atSign);
-    //  if(0 == name){
-    //    studentNum = i;
-    //  }
-    //}
-    //res.send(json.people[studentNum]);
+    for (i=0; i<students.length; i++){
+      var atSign = students[i].email.indexOf("@");
+      var temp = students[i].email.subtr(0, atSign);
+      if(temp == name){
+        studentNum = i;
+      }
+    };
+    console.log(studentNum);
   });
 };
-
 
