@@ -2,6 +2,7 @@ var olinapps = olinapps = require('olinapps')
 var Project = require('../models/project')
 var Idea = require('../models/idea') 
 var formidable = require("formidable")
+var rem = require("rem")
 
 /**
  * Routes
@@ -134,3 +135,23 @@ exports.upvoteP = function(req,res){
     });
   });
 };
+
+exports.findPerson = function(req,res){
+  var name = req.params.name;
+  //var studentNum;
+  rem.json('http://directory.olinapps.com/api/people').get({
+    sessionid: req.session['sessionid']
+  }, function (err, json) {
+    res.json(json);
+    //for(i =0; i<json.people.length; i++){
+      //var atSign = json.people[i].email.indexOf("@");
+      //var temp = json.people[i].email.subtr(0, atSign);
+    //  if(0 == name){
+    //    studentNum = i;
+    //  }
+    //}
+    //res.send(json.people[studentNum]);
+  });
+};
+
+
