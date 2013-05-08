@@ -142,17 +142,12 @@ exports.findPerson = function(req,res){
   rem.json('http://directory.olinapps.com/api/people').get({
     sessionid: req.session['sessionid']
   }, function (err, json) {
-    //res.json(json);
-    var students = err.people;
-    res.json(json);
-    for (i=0; i<students.length; i++){
-      var atSign = students[i].email.indexOf("@");
-      var temp = students[i].email.subtr(0, atSign);
-      if(temp == name){
-        studentNum = i;
+    var people = json.people;
+    for (var i = 0; i < people.length; i++){
+      if (people[i].email.indexOf(name) > -1){
+        res.json(people[i])
       }
-    };
-    console.log(studentNum);
+    }
   });
 };
 
