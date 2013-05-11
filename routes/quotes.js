@@ -3,6 +3,7 @@ var Project = require('../models/project')
 var Idea = require('../models/idea') 
 var formidable = require("formidable")
 var rem = require("rem")
+var People = require('../models/people')
 
 /**
  * Routes
@@ -138,6 +139,24 @@ exports.upvoteP = function(req,res){
 
 exports.findPerson = function(req,res){
   var name = req.params.name;
+  var found;
+  var  person = People.find({searchAs:req.params.name}).exec(function (err, all){
+    if (err)
+      return console.log(ideas);
+    found = all[0];
+    console.log(found);
+    var projects = Project.find({$or:[{collaborators:name},{leader:name}]}).exec(function (err, projs){
+      var ideas = Idea.find({adopters:name}).exec(function (err, iders){
+        var title = found.name + "'s Profile";
+        res.render('people', {title:title, person:found, projects:projs, ideas:iders});
+      });
+    });
+  });
+};
+
+/*
+exports.findPerson = function(req,res){
+  var name = req.params.name;
   var studentNum;
   rem.json('http://directory.olinapps.com/api/people').get({
     sessionid: req.session['sessionid']
@@ -145,9 +164,12 @@ exports.findPerson = function(req,res){
     var people = json.people;
     for (var i = 0; i < people.length; i++){
       if (people[i].email.indexOf(name) > -1){
-        res.json(people[i])
+        var projects = Project.find({$or:[{collaborators:name},{leader:name}]}).exec(function (err, projs){
+          console.log(people[i]);
+          res.render('people', {title:'Profile Page', person:people[i], projects:projs});
+        });
       }
     }
   });
 };
-
+*/

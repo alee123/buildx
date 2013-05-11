@@ -1,15 +1,37 @@
 extends layout
 
 block content
-  h1 Build
-   sup x
+  br
   .span(id="listWrapper")
     div(id='dataHolder')
-      img(id="avatar", src='/images/arrow.jpg')
       div(id='personData')
-        
-    div(id='projectHolder')
-    div(is='ideaHolder')
+        div(id='picHolder')
+          img(id="avatar", src=person.thumbnail) 
+        div(id='textInfo')
+          h2 #{person.name} (#{person.nickname})
+          h4 #{person.email}
+          h4 #{person.year}
+    br
+    div(id='everythingElse')
+      div(id='projectHolder')
+        each project, i in projects
+          .well(class="projectWell")
+            div(class="listText")
+              img(class="coverPic", src=project.coverPhoto)
+              br
+              div(class="titleDiv")
+                a(class="titles", href="/projects/"+project._id) #{project.title}
+              div(class="textDiv")
+                p(class="text") "#{project.abbrevDescription}..."
+              p(class="names") -#{project.leader} (#{project.upvote})  
+                a(id=project._id, class="upvoteLink", onclick="upProject(this.id)")
+                  img(src='/images/arrow.jpg', width='12', height='12') 
+                each peep, i in project.collaborators
+                  p(class="names") -#{peep}
+      div(id='ideaHolder')
+        each idea, i in ideas
+          div(class="ideaText")
+            p(class="text") #{idea.title}
 
 
 

@@ -11,7 +11,8 @@ var express = require('express')
   , olinapps = require('olinapps')
   , mongojs = require('mongojs')
   , MongoStore = require('connect-mongo')(express)
-  , rem = require('rem');
+  , rem = require('rem')
+  , populate = require('./routes/populate');
 
 var app = express();
 
@@ -67,6 +68,7 @@ app.get('/upvote', quotes.update);
 app.get('/projects/:projID', quotes.projectprof);
 app.post('/adopt', quotes.adopt);
 app.get('/find/:name', quotes.findPerson);
+app.get('/find', populate.find);
 
 /*
 app.get('/students.json', function (req, res) {
