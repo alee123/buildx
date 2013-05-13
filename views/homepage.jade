@@ -25,7 +25,7 @@ block content
                     each project, i in projects
                       .well(class="projectWellHome")
                         div(class="listText")
-                          img(class="coverPic", src='/images/cat.jpg')
+                          img(class="coverPic", src=project.coverPhoto)
                           br
                           div(class="titleDiv")
                             a(class="titlesHome", href="/projects/"+project._id) #{project.title}
@@ -41,5 +41,5 @@ block content
                               a(href="/find/"+idea.name, class="names") 
                                h5 #{idea.name} 
                             td 
-                              h5  #{idea.description}
+                              h5  #{idea.title}
 

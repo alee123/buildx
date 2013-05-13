@@ -17,6 +17,7 @@ html
     script(type='text/javascript', src='/javascripts/widget/lib/jquery.ui.widget.min.js')
     script(type='text/javascript', src='/javascripts/widget/lib/jquery.ui.rcarousel.min.js')
     script(src='/javascripts/script.js')
+    script(type="text/javascript", src="https://www.dropbox.com/static/api/1/dropins.js", id="dropboxjs", data-app-key="1nyuxgzrte5w6hh")
     script(type='text/javascript')
       function testClick(clickID) {
         $.post('/upvote', {_id: clickID});
@@ -35,7 +36,7 @@ html
           $('#top').append(data);  
         })
       }
-
+      
     style
       #quotes, #quotes li { display: block; padding: 0; margin: 0; }
       #quotes li { margin: 15px 0 30px }
@@ -74,7 +75,11 @@ html
            .controls
              a(href='/submit')
               img(src = '/images/myprofile.png')      
-
+        td(width='500px')    
+          .input-append
+              input#appendedInputButton.span2(type='text')
+              button.btn(type='button') 
+               i.icon-search
   body
     .container-fluid
       block content

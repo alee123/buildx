@@ -19,8 +19,12 @@ block content
         .span6
           h4 Relevant Files:
           table.table.table-hover
+          each file in project.files
             tr
-              td lol.pdf
-              td open
+                - var i = file.lastIndexOf("/");
+                - var title = file.substr(i+1, file.length)
+                td #{title}
+                td
+                  a(href=file, target="_blank") SEE IT!
        td
         .span4

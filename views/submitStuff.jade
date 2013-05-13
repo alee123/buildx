@@ -22,7 +22,11 @@ block content
        .control-group
          label.control-label(for='cover photo') Cover Photo:
          .controls
-           input(type="file", name="upload", multiple="multiple")  
+           input(type="dropbox-chooser", name="selectedfile", style="visibility: hidden;", data-link-type="direct")
+       .control-group
+         label.control-label(for='cover photo') Files:
+         .controls
+           input(type="dropbox-chooser", name="files", style="visibility: hidden;", data-link-type="preview", data-multiselect="true")
        .control-group
          label.control-label(for='')    
        .control-group

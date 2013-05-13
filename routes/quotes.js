@@ -4,6 +4,7 @@ var Idea = require('../models/idea')
 var formidable = require("formidable")
 var rem = require("rem")
 var People = require('../models/people')
+var Dropbox = require("dropbox")
 
 /**
  * Routes
@@ -43,8 +44,8 @@ exports.newProject = function(req,res){
     title: req.body.name, 
     description: req.body.projdescription, 
     abbrevDescription: ((req.body.projdescription).slice(0,100)).toString(),
-    coverphoto: '', 
-    files:'', 
+    coverPhoto: req.body.selectedfile, 
+    files:req.body.files.split, 
     collaborators: [req.body.collaborators]
   });
   project.save(function(err){
