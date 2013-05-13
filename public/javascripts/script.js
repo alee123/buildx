@@ -2,10 +2,10 @@ $(function () {
   $("#carousel").rcarousel({
     visible: 1,
     step: 1,
-    speed: 400,
+    speed: 1000,
     height: 453,
     width: 1400,
-    auto: {enabled: true}
+    auto: {enabled: true,direction: "next", interval: 5000}
   })
   $('#projectForm').submit(function (event) {
     console.log('called');
