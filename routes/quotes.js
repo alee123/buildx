@@ -48,7 +48,7 @@ exports.newProject = function(req,res){
     description: req.body.projdescription, 
     abbrevDescription: ((req.body.projdescription).slice(0,100)).toString(),
     coverPhoto: req.body.selectedfile, 
-    files:req.body.files.split, 
+    files:req.body.files.split(", "), 
     collaborators: [req.body.collaborators]
   });
   project.save(function(err){
