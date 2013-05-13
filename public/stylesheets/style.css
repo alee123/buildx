@@ -105,3 +105,9 @@ div{
 	display:inline-block;
 	vertical-align: top;
 }
+
+#nextPrev{
+	margin-left: auto;
+	margin-right: auto;
+	width: 70px;
+}

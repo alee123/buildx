@@ -4,11 +4,16 @@ block content
                
    table.table.table-condensed 
       tr
-        td 
+        td
           .control-group
            .controls
              button.btn-link.btn(type='submit') 
-              img(src = '/images/filler.png')
+            div(id="carousel")
+              each banner, i in banners
+                img(src=banner, alt='pic')
+            div(id='nextPrev')
+              a(href="#", id="ui-carousel-prev") prev | 
+              a(href="#", id="ui-carousel-next") next
       tr
         td
          .container-fluid

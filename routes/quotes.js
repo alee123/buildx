@@ -23,7 +23,8 @@ exports.home = function (req, res) {
         title: 'buildx',
         user: olinapps.user(req), 
         projects: projs.slice(0,4),
-        ideas: iders.slice(0,3)
+        ideas: iders.slice(0,3),
+        banners: ["/projectbanner.png", "/ideabanner.png"]
       });
     });
   });
