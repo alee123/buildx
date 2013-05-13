@@ -12,8 +12,10 @@ block content
               each banner, i in banners
                 img(src=banner, alt='pic')
             div(id='nextPrev')
-              a(href="#", id="ui-carousel-prev") prev | 
-              a(href="#", id="ui-carousel-next") next
+              a(href="#", id="ui-carousel-prev") 
+               img(src='/images/left.png', width='10', height='10') 
+              a(href="#", id="ui-carousel-next") 
+               img(src='/images/right.png', width='10', height='10') 
       tr
         td
          .container-fluid
@@ -36,7 +38,8 @@ block content
                         each idea, i in ideas
                           tr
                             td 
-                              a(href="/find/"+idea.name, class="names") -#{idea.name} 
+                              a(href="/find/"+idea.name, class="names") 
+                               h5 #{idea.name} 
                             td 
                               h5  #{idea.description}
 
