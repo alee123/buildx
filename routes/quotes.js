@@ -13,7 +13,8 @@ var Dropbox = require("dropbox")
 exports.submit = function (req, res) {
   res.render('submitStuff', {
     title: 'buildx',
-    user: olinapps.user(req)
+    user: olinapps.user(req),
+    uname: olinapps.user(req).username
   });
 };
 
@@ -25,7 +26,8 @@ exports.home = function (req, res) {
         user: olinapps.user(req), 
         projects: projs.slice(0,4),
         ideas: iders.slice(0,3),
-        banners: ["/projectbanner.png", "/ideabanner.png"]
+        banners: ["/projectbanner.png", "/ideabanner.png"],
+        uname: olinapps.user(req).username
       });
     });
   });
@@ -34,7 +36,8 @@ exports.home = function (req, res) {
 exports.info = function (req, res){
     res.render('whatisbuildx', {
     title: 'buildx',
-    user: olinapps.user(req)
+    user: olinapps.user(req),
+    uname: olinapps.user(req).username
   });
 }
 
@@ -91,7 +94,7 @@ exports.ideaList = function (req, res) {
     if (err)
       return console.log("error", ideas);
     console.log(docs);
-    res.render('ideas', {title:'ideas', ideas:docs});
+    res.render('ideas', {title:'ideas', ideas:docs, uname: olinapps.user(req).username});
   });
 };
 
@@ -100,7 +103,7 @@ exports.projectList = function (req, res) {
     if (err)
       return console.log("error", ideas);
     console.log(docs);
-    res.render('projects', {title:'projects', projects:docs});
+    res.render('projects', {title:'projects', projects:docs, uname: olinapps.user(req).username});
   });
 };
 
@@ -110,7 +113,7 @@ exports.projectprof = function (req, res) {
     if (err)
       return console.log("error", ideas);
     console.log(docs);
-    res.render('newproject', {title:'projects', project:docs[0]});
+    res.render('newproject', {title:'projects', project:docs[0], uname: olinapps.user(req).username});
   });
 };
 
@@ -132,7 +135,7 @@ exports.update = function(req,res){
   var allIdeas = Idea.find().sort("-_id").exec(function (err, all){
     if (err)
       return console.log(ideas);
-    res.render('_ideas', {ideas:all});
+    res.render('_ideas', {ideas:all, uname: olinapps.user(req).username});
   });
 };
 
@@ -162,7 +165,7 @@ exports.findPerson = function(req,res){
     var projects = Project.find({$or:[{collaborators:name},{leader:name}]}).exec(function (err, projs){
       var ideas = Idea.find({adopters:name}).exec(function (err, iders){
         var title = found.name + "'s Profile";
-        res.render('people', {title:title, person:found, projects:projs, ideas:iders});
+        res.render('people', {title:title, person:found, projects:projs, ideas:iders, uname: olinapps.user(req).username});
       });
     });
   });

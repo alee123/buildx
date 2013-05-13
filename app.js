@@ -68,7 +68,7 @@ app.get('/upvote', quotes.update);
 app.get('/projects/:projID', quotes.projectprof);
 app.post('/adopt', quotes.adopt);
 app.get('/find/:name', quotes.findPerson);
-app.get('/find', populate.find);
+//app.get('/find', populate.find);
 
 /*
 app.get('/students.json', function (req, res) {

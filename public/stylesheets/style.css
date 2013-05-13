@@ -60,7 +60,6 @@ div{
 	display:inline-block;
 	vertical-align: top;
 	margin: 10px;
-	height: 410px;
 	text-align:left;
 }
 
@@ -69,7 +68,6 @@ div{
 	display:inline-block;
 	vertical-align: top;
 	margin:10px;
-	height: 200px;
 }
 
 .controls{
