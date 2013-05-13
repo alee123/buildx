@@ -8,7 +8,7 @@ block content
         div(id='picHolder')
           img(id="avatar", src=person.thumbnail) 
         div(id='textInfo')
-          h2 #{person.name} (#{person.nickname})
+          h2 #{person.name} 
           h4 #{person.email}
           h4 #{person.year}
     br
@@ -22,13 +22,22 @@ block content
               div(class="titleDiv")
                 a(class="titles", href="/projects/"+project._id) #{project.title}
               div(class="textDiv")
-                p(class="text") "#{project.abbrevDescription}..."
-              p(class="names") -#{project.leader} (#{project.upvote})  
-                a(id=project._id, class="upvoteLink", onclick="upProject(this.id)")
-                  img(src='/images/arrow.jpg', width='12', height='12') 
+                p(class="text") 
+                h5 "#{project.abbrevDescription}..."
+              p(class="names") 
+                h5 -#{project.leader} (#{project.upvote})  
+                 a(id=project._id, class="upvoteLink", onclick="upProject(this.id)")
+                   img(src='/images/upvote.png', width='30', height='30') 
                 each peep, i in project.collaborators
-                  p(class="names") -#{peep}
+                  p(class="names") 
+                  h6 -#{peep}
       div(id='ideaHolder')
+       h3 Adopted Ideas:
+       table.table.table-condensed 
         each idea, i in ideas
+         tr
           div(class="ideaText")
-            p(class="text") #{idea.title}
+           td 
+              p(class="text") 
+              h4 #{idea.title}
+              
