@@ -22,6 +22,8 @@ block content
                           br
                           div(class="titleDiv")
                             a(class="titlesHome", href="/projects/"+project._id) #{project.title}
+                            br
+                            a(class="peopleHome", href="/find/"+#{project.leader}) #{project.leader}
 
                  .span4
                      h3 New Ideas:

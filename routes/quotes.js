@@ -116,8 +116,6 @@ exports.upvote = function(req,res){
   var user = olinapps.user(req).username;
   var upFind = Idea.find({_id:req.body._id}).exec(function (err, ups){
     var upvoters = ups[0].upvoters;
-    console.log(upvoters);
-    console.log(ups[0].upvote);
     if(upvoters.indexOf(user)==-1){
       upvoters.push(user);
       var ideas = Idea.update({_id:req.body._id}, {$set: {'upvoters':upvoters,'upvote':upvoters.length}}).exec(function (err,docs){
@@ -139,11 +137,15 @@ exports.update = function(req,res){
 exports.upvoteP = function(req,res){
   var user = olinapps.user(req).username;
   var upFind = Project.find({_id:req.body._id}).exec(function (err, ups){
-    console.log(ups[0].upvote);
-    var ideas = Project.update({_id:req.body._id}, {$set: {'upvote':ups[0].upvote+1}}).exec(function (err,docs){
-      if (err)
-        return console.log(ideas);
-    });
+    var upvoters = ups[0].upvoters;
+    if(upvoters.indexOf(user)==-1){
+      upvoters.push(user);
+      var projs = Project.update({_id:req.body._id}, {$set: {'upvoters':upvoters, 'upvote':upvoters.length}}).exec(function (err,docs){
+        if (err)
+          return console.log(ideas);
+      });
+    }
+
   });
 };
 

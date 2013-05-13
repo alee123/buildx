@@ -6,7 +6,7 @@ var ideaSchema = mongoose.Schema({
   title: String,
   description: String,
   tags: [{type: String, ref: 'Tag'}],
-  upvoters: [{type: String, ref: 'Tag'}],
+  upvoters: [{type: String, ref: 'Upvote'}],
   upvote: {type: Number, default: 0},
   adopters: {type: String, default: ""}
 });

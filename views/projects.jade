@@ -11,7 +11,9 @@ block content
             a(class="titles", href="/projects/"+project._id) #{project.title}
           div(class="textDiv")
             p(class="text") "#{project.abbrevDescription}..."
-          p(class="names") -#{project.leader} (#{project.upvote})  
+          p(class="names") 
+            a(href="/find/"+project.leader, class="names") -#{project.leader}
+            #{project.upvote}
             a(id=project._id, class="upvoteLink", onclick="upProject(this.id)")
               img(src='/images/arrow.jpg', width='12', height='12') 
             each person, i in project.collaborators

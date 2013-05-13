@@ -8,7 +8,8 @@ var projectSchema = mongoose.Schema({
   coverPhoto: {type: String, default:"/images/cat.jpg"},
   files: [{type: String, ref:'FilePath'}],
   collaborators: [{type: String, ref: 'Collaborator'}],
-  upvote: {type: Number, default: 0}
+  upvote: {type: Number, default: 0},
+  upvoters: [{type: String, ref: 'Upvote'}]
 });
 
 var Project = mongoose.model('Project', projectSchema);
