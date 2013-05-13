@@ -13,7 +13,7 @@
            p(class="text") "#{idea.description}"
            a(href="/find/"+idea.name, class="names") -#{idea.name} 
            p(class="names") adopters: #{idea.adopters}
-         td
+         td(style='text-align: center')
           .span1
            .displayed      
             a(id=idea._id, class="upvoteLink", onclick="testClick(this.id)")

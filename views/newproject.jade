@@ -4,13 +4,23 @@ block content
    
    table.table.table-condensed 
      tr
-      td
-       .span5 
+      td(style='text-align: right')
           img(src=project.coverPhoto)
-       .span7 
-          h2 #{project.title}
+      td(style='text-align: left')
+       .span8
+          h1 Project: #{project.title}
           br
+          h3 Description: 
           h4 #{project.description}
      tr
+       td 
+        .span1
+       td(style='text-align: left')
+        .span6
+          h4 Relevant Files:
+          table.table.table-hover
+            tr
+              td lol.pdf
+              td open
        td
-         h3 Relevant Files:
+        .span4
