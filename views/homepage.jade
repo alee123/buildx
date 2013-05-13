@@ -26,19 +26,10 @@ block content
                  .span4
                      h3 New Ideas:
                      table.table.table-condensed
-                        tr
-                          td 
-                           h5 Tim Ryan
-                          td 
-                           h5  A car remote-controlled by Node
-                        tr
-                          td 
-                           h5 Paul Booth
-                          td 
-                           h5 Machine Shop Availabilitybots
-                        tr
-                          td
-                            h5 Doyung Lee
-                          td
-                            h5 A cat that feeds and cleans itself.
+                        each idea, i in ideas
+                          tr
+                            td 
+                              a(href="/find/"+idea.name, class="names") -#{idea.name} 
+                            td 
+                              h5  #{idea.description}
 

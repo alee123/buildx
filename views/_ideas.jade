@@ -11,8 +11,8 @@
           .span9
            p(class="titles") #{idea.title}
            p(class="text") "#{idea.description}"
-           p(class="names") -#{idea.name} 
-           p(class="names") adopters:#{idea.adopters}
+           a(href="/find/"+idea.name, class="names") -#{idea.name} 
+           p(class="names") adopters: #{idea.adopters}
          td
           .span1
            .displayed      
@@ -20,4 +20,3 @@
               img(src='upvote.png', width='100', height='100')
             p(class="names", margin-left="auto")
                h4   (#{idea.upvote})  
-          

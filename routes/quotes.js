@@ -17,10 +17,14 @@ exports.submit = function (req, res) {
 };
 
 exports.home = function (req, res) {
-  var projects = Project.find({}).sort("-_id").exec(function (err, docs){
-    res.render('homepage', {
-      title: 'buildx',
-      user: olinapps.user(req), projects: docs.slice(0,4)
+  var projects = Project.find({}).sort("-_id").exec(function (err, projs){
+    var ideas = Idea.find({}).sort("-_id").exec(function (err, iders){
+      res.render('homepage', {
+        title: 'buildx',
+        user: olinapps.user(req), 
+        projects: projs.slice(0,4),
+        ideas: iders.slice(0,3)
+      });
     });
   });
 };
@@ -69,7 +73,7 @@ exports.adopt = function(req,res){
     if(alreadyAdopted==""){
       alreadyAdopted = user;
     }
-    else{
+    else if (alreadyAdopted.indexOf(user)<0){
       alreadyAdopted = alreadyAdopted + ", " + user;
     }
     console.log(alreadyAdopted);
@@ -111,10 +115,16 @@ exports.projectprof = function (req, res) {
 exports.upvote = function(req,res){
   var user = olinapps.user(req).username;
   var upFind = Idea.find({_id:req.body._id}).exec(function (err, ups){
-    var ideas = Idea.update({_id:req.body._id}, {$set: {'upvote':ups[0].upvote+1}}).exec(function (err,docs){
-      if (err)
-        return console.log(ideas);
-    });
+    var upvoters = ups[0].upvoters;
+    console.log(upvoters);
+    console.log(ups[0].upvote);
+    if(upvoters.indexOf(user)==-1){
+      upvoters.push(user);
+      var ideas = Idea.update({_id:req.body._id}, {$set: {'upvoters':upvoters,'upvote':upvoters.length}}).exec(function (err,docs){
+        if (err)
+          return console.log(ideas);
+      });
+    }
   });
 };
 
