@@ -8,7 +8,7 @@ block content
         div(id='picHolder')
           img(id="avatar", src=person.thumbnail) 
         div(id='textInfo')
-          h2 #{person.name} 
+          h2(style= 'color:rgb(0,51,128)') #{person.name} 
           h4 #{person.email}
           h4 #{person.year}
     br
@@ -32,7 +32,7 @@ block content
                   p(class="names") 
                   h6 -#{peep}
       div(id='ideaHolder')
-       h3 Adopted Ideas:
+       h3(style= 'color:rgb(0,51,128)') Adopted Ideas:
        table.table.table-condensed 
         each idea, i in ideas
          tr
